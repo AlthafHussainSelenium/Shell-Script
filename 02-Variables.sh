@@ -1,7 +1,10 @@
 #!/bin/bash
 
+VARIABLE1="Althaf"
+VARIABLE2="Zuveriya"
+VARIABLE3="Umar Khalid"
 
-echo "Zuveriya is Althaf daughter"
-echo "Althaf is Zuvariaya father"
-echo "Umar Khalid is Althaf son"
-echo "Althaf is Umar Khalid father"
+echo "$VARIABLE2 is $VARIABLE1 daughter"
+echo "$VARIABLE1 is $VARIABLE2 father"
+echo "$VARIABLE3 is $VARIABLE1 son"
+echo "$VARIABLE1 is $VARIABLE3 father"
