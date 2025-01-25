@@ -10,3 +10,5 @@ echo "Name entered: $NAME"
 echo "Please enter your password: "
 
 read -s PASSWORD
+
+echo "Password entered: $PASSWORD"
