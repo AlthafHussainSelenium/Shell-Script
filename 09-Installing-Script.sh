@@ -19,9 +19,10 @@ if [ $USERID -ne 0 ]; then
     exit 1 # other than 0
 fi
 dnf list installed mysql
-echo "Previous command mysql output is ... $?"
+echo "Previous list installed command mysql output is ... $?"
 if [ $? -ne 0 ]; then # not installed
     dnf install mysql -y
+    echo "Previous install command mysql output is ... $?"
     if [ $? -ne 0 ]; then
         echo "Installing MySQL ... FAILURE"
         exit 1
