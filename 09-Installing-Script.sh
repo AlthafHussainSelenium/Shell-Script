@@ -20,8 +20,11 @@ if [ $USERID -ne 0 ]; then
 fi
 dnf remove mysql -y
 echo "my sql removal output is ... $?"
+
 dnf list installed mysql
+
 echo "Previous list installed command mysql output is ... $?"
+
 if [ $? -ne 0 ]; then # not installed
     dnf install mysql -y
     echo "Previous install command mysql output is ... $?"
