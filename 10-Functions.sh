@@ -25,7 +25,14 @@ else
     echo "MySQL is already ... INSTALLED"
 fi
 
-dnf remove mysql -y
+dnf list installed mysql
+
+if [ $? -ne 0 ]; then # not uninstalled
+    dnf remove mysql -y
+    VALIDATE $? "Uninstalling MySQL"
+else
+    echo "MySQL is already ... UNINSTALLED"
+fi
 
 dnf list installed git
 
