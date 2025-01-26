@@ -7,6 +7,15 @@ fi
 
 dnf list installed mysql
 
+if [ $? -eq 0 ]; then # not uninstalled
+    dnf remove mysql -y
+    VALIDATE $? "Uninstalling MySQL"
+else
+    echo "MySQL is already ... UNINSTALLED"
+fi
+
+dnf list installed mysql
+
 if [ $? -ne 0 ]; then # not installed
     dnf install mysql -y
     if [ $? -ne 0 ]; then
