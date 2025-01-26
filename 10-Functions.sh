@@ -25,6 +25,8 @@ else
     echo "MySQL is already ... INSTALLED"
 fi
 
+dnf remove mysql -y
+
 dnf list installed git
 
 if [ $? -ne 0 ]; then
