@@ -4,6 +4,13 @@
 # Identify the current user is root user or not
 # If user is root then allow to install
 # else thow the error message and exit the script
+# check whether the package already installed
+# if not installed
+# then install the package
+# if the installation is not successful
+# then exit the script
+# else print the package installation is successful
+# else print the package already installed
 
 USERID=$(id -u)
 if [ $USERID -ne 0 ]; then
@@ -22,4 +29,18 @@ if [ $? -ne 0 ]; then # not installed
     fi
 else
     echo "MySQL is already ... INSTALLED"
+fi
+
+dnf list installed git
+
+if [ $? -ne 0 ]; then
+    dnf install git -y
+    if [ $? -ne 0 ]; then
+        echo "Installing Git ... FAILURE"
+        exit 1
+    else
+        echo "Installing Git ... SUCCESS"
+    fi
+else
+    echo "Git is already ... INSTALLED"
 fi
