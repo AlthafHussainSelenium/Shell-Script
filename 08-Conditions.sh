@@ -61,7 +61,8 @@ echo "Choose an operation:"
 echo "1) Add"
 echo "2) Subtract"
 echo "3) Multiply"
-OPERATION=2
+echo "4) Division"
+OPERATION=3
 echo "Your Opertaion is ... $OPERATION"
 
 case $OPERATION in
