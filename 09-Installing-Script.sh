@@ -18,6 +18,8 @@ if [ $USERID -ne 0 ]; then
     echo "ERROR:: You must have sudo access to execute this script"
     exit 1 # other than 0
 fi
+dnf remove mysql -y
+echo "my sql removal output is ... $?"
 dnf list installed mysql
 echo "Previous list installed command mysql output is ... $?"
 if [ $? -ne 0 ]; then # not installed
