@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Algorithm
+# Algorithm ####
 # Identify the current user is root user or not
 # If user is root then allow to install
 # else thow the error message and exit the script
