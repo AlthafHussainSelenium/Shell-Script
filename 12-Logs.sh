@@ -12,6 +12,7 @@ TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 
 VALIDATE() {
+    dnf list installed mysql
     if [ $? -ne 0]; then
         echo -e "$2 ... $R FAILURE $N"
         exit 1
