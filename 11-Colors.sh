@@ -22,7 +22,7 @@ fi
 
 # Remove the software if already it is installed
 dnf list installed mysql
-if [ $? -eq 0]; then
+if [ $? -eq 0 ]; then
     dnf remove mysql -y
     VALIDATE $? "Un-Installing MySQL"
 fi
