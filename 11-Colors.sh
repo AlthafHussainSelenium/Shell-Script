@@ -7,7 +7,7 @@ Y="\e[33m]"
 
 # Method to validate
 VALIDATE() {
-    if [ $1 -ne 1 ]; then
+    if [ $1 -ne 0 ]; then
         echo -e "$2 ... $R FAILURE $N"
     else
         echo -e "$2 ... $G SUCCESS $N"
@@ -16,7 +16,7 @@ VALIDATE() {
 
 # Verify Root user or not script
 if [ $USERID -ne 0 ]; then
-    echo -e "$R ... ERROR:: You must have sudo access to execute this script"
+    echo -e "$R ... ERROR:: You must have sudo access to execute this script $N"
     exit 1 # other than 0
 fi
 
