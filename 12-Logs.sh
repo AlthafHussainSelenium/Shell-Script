@@ -19,19 +19,19 @@ VALIDATE() {
     else
         echo -e "$2 ... $G SUCCESS $N"
     fi
-
-    echo "Script started execution at: $TIMESTAMP &>>$LOG_FILE_NAME"
-
-    # Verify Root user or not script
-    if [ $USERID -ne 0 ]; then
-        echo -e "$R ERROR:: You must have sudo access to execute this script $N"
-        exit 1 # other than 0
-    fi
-
-    # Remove the software if already it is installed
-    dnf list installed mysql
-    if [ $? -eq 0 ]; then
-        dnf remove mysql -y
-        VALIDATE $? "Un-Installing MySQL"
-    fi
 }
+
+echo "Script started execution at: $TIMESTAMP &>>$LOG_FILE_NAME"
+
+# Verify Root user or not script
+if [ $USERID -ne 0 ]; then
+    echo -e "$R ERROR:: You must have sudo access to execute this script $N"
+    exit 1 # other than 0
+fi
+
+# Remove the software if already it is installed
+dnf list installed mysql
+if [ $? -eq 0 ]; then
+    dnf remove mysql -y
+    VALIDATE $? "Un-Installing MySQL"
+fi
