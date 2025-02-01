@@ -22,16 +22,16 @@ if [ $USERID -ne 0 ]; then
 fi
 
 # Remove the software if already it is installed
-dnf list installed mysql &>>$LOG_FILE_NAME
+dnf list installed mysql
 if [ $? -eq 0 ]; then
-    dnf remove mysql -y &>>$LOG_FILE_NAME
+    dnf remove mysql -y
     VALIDATE $? "Un-Installing MySQL"
 fi
 
 # validate if the software is already installed or not
-dnf list installed mysql &>>$LOG_FILE_NAME
+dnf list installed mysql
 if [ $? -ne 0 ]; then
-    dnf install mysql -y &>>$LOG_FILE_NAME
+    dnf install mysql -y
     VALIDATE $? "Installing MySQL"
 else
     echo -e "MySQL is already ... $Y INSTALLED $N"
