@@ -26,6 +26,8 @@ echo "Script started execution at: $TIMESTAMP &>>$LOG_FILE_NAME"
 # verify whether the folder is exist or not
 if [ -d $LOG_FOLDER ]; then
     echo -e "$R ... Folder is exist $N"
+    $(rm -rf /var/log/shellscript-logs)
+    echo -e "$G ... Folder is removed $N"
 else
     $(mkdir $LOG_FOLDER)
     VALIDATE $? "Folder is created"
