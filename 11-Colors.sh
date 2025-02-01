@@ -7,7 +7,7 @@ Y="\e[33m]"
 
 # Method to validate
 VALIDATE() {
-    if [ $1 -ne 0]; then
+    if [ $1 -ne 0 ]; then
         echo -e $2 ... $R FAILURE $N
     else
         echo -e $2 ... $G SUCCESS $N
