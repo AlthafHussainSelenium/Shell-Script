@@ -23,6 +23,14 @@ VALIDATE() {
 
 echo "Script started execution at: $TIMESTAMP &>>$LOG_FILE_NAME"
 
+# verify whether the folder is exist or not
+if [ -d $LOG_FOLDER ]; then
+    echo -e "$R ... Folder is exist $N"
+else
+    $(mkdir $LOG_FOLDER)
+    VALIDATE $? "Folder is created"
+fi
+
 # Verify Root user or not script
 if [ $USERID -ne 0 ]; then
     echo -e "$R ERROR:: You must have sudo access to execute this script $N"
