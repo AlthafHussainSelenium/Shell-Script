@@ -21,11 +21,11 @@ if [ $USERID -ne 0 ]; then
 fi
 
 # Remove the software if already it is installed
-dnf list installed mysql
-if [ $? -eq 0 ]; then
-    dnf remove mysql -y
-    VALIDATE $? "Un-Installing MySQL"
-fi
+# dnf list installed mysql
+# if [ $? -eq 0 ]; then
+#     dnf remove mysql -y
+#     VALIDATE $? "Un-Installing MySQL"
+# fi
 
 # validate if the software is already installed or not
 dnf list installed mysql
