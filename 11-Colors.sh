@@ -17,21 +17,21 @@ VALIDATE() {
 
 # Verify Root user or not script
 if [ $USERID -ne 0 ]; then
-    echo -e "$R ... ERROR:: You must have sudo access to execute this script $N"
+    echo -e "$R ERROR:: You must have sudo access to execute this script $N"
     exit 1 # other than 0
 fi
 
 # Remove the software if already it is installed
-dnf list installed mysql
+dnf list installed mysql &>>$LOG_FILE_NAME
 if [ $? -eq 0 ]; then
-    dnf remove mysql -y
+    dnf remove mysql -y &>>$LOG_FILE_NAME
     VALIDATE $? "Un-Installing MySQL"
 fi
 
 # validate if the software is already installed or not
-dnf list installed mysql
+dnf list installed mysql &>>$LOG_FILE_NAME
 if [ $? -ne 0 ]; then
-    dnf install mysql -y
+    dnf install mysql -y &>>$LOG_FILE_NAME
     VALIDATE $? "Installing MySQL"
 else
     echo -e "MySQL is already ... $Y INSTALLED $N"
