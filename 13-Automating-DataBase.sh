@@ -14,9 +14,9 @@
 USERID=$(id -u)
 
 R="\e[31m"
-Y="\e[31m"
-G="\e[31m"
-N="\e[31m"
+Y="\e[32m"
+G="\e[33m"
+N="\e[0m"
 
 VALIDATE() {
     if [ $1 -ne 0 ]; then
