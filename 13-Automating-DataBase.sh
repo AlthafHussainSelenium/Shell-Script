@@ -43,7 +43,7 @@ LOG_FOLDER="/var/log/expense-logs"
 if [ ! -d $LOG_FOLDER ]; then
     echo -e "$R Folder is not Exist $N"
     mkdir $LOG_FOLDER
-    VALIDATE $? "Creating expense-logs Folder"
+    VALIDATE $? "Creating expense-logs Folder is "
 fi
 
 LOG_FILE=$(echo $0 | cut -d "." -f1)
@@ -62,7 +62,7 @@ systemctl start mysqld &>>$LOG_FILE_NAME
 VALIDATE $? "Starting MySQL Server"
 
 # This command will set the root password once it is successfull then it will show the databases
-mysql -h mysql.daws82s.online -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE_NAME
+mysql -h mysql.atzuk.space -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE_NAME
 
 # if the root password was set then use below code
 if [ $? -ne 0 ]; then
