@@ -33,7 +33,7 @@ CHECK_ROOT() {
 
 CREATEFILES() {
     for i in 0 1 2 3 4 5; do
-        touch "$1/$2_$i.log"
+        touch "$1/$2.log"
     done
     echo "list of the file are :: "
     ls "$1"
@@ -70,5 +70,3 @@ while read -r filepath; do # here filepath is the variable name, you can give an
     rm -rf $filepath
     echo "Deleted file: $filepath"
 done <<<$FILES_TO_DELETE
-
-ls "$LOG_FOLDER"
