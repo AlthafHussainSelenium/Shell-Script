@@ -34,9 +34,9 @@ CHECK_ROOT() {
 CREATEFILES() {
     for i in {0..10}; do
         touch "$1/$2.log"
-        echo "list of the file are :: "
-        ls "$1"
     done
+    echo "list of the file are :: "
+    ls "$1"
 
 }
 
