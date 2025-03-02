@@ -61,3 +61,6 @@ echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
 
 dnf module disable nodejs -y &>>$LOG_FILE_NAME
 VALIDATE $? "Disabling nodejs is"
+
+dnf module enable nodejs:20 -y &>>$LOG_FILE_NAME
+VALIDATE $? "enabling nodejs:20 is"
