@@ -34,7 +34,7 @@ CHECK_ROOT() {
     fi
 }
 
-CHECK_ROOT $USERID
+CHECK_ROOT
 
 # Making a Log file path and save it
 LOG_FOLDER="/var/log/expense-logs"
