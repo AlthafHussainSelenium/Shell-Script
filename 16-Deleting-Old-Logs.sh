@@ -34,7 +34,8 @@ CHECK_ROOT() {
 CREATEFILES() {
     for i in {0..10}; do
         touch " $LOG_FOLDER/$TIMESTAMP i"
-        echo "list of the file are :: " ls "$LOG_FOLDER"
+        echo "list of the file are :: "
+        ls "$LOG_FOLDER"
     done
 
 }
@@ -51,6 +52,8 @@ if [ ! -d $LOG_FOLDER ]; then
     echo -e "$R Folder is not Exist $N"
     mkdir $LOG_FOLDER
     VALIDATE $? "Creating expense-logs Folder is "
+else
+    echo -e "$R Folder is already Exist $N"
 fi
 
 LOG_FILE=$(echo $0 | cut -d "." -f1)
@@ -61,11 +64,3 @@ echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
 
 FILES_TO_DELETE=$(find $LOG_FOLDER -name "*.log" -mtime "+$DAYS")
 echo "Files to be deleted: $FILES_TO_DELETE"
-
-CREATEFILES() {
-    for i in {0..10}; do
-        cd $LOG_FOLDER
-        touch "$TIMESTAMP i"
-    done
-
-}
