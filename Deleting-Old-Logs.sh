@@ -1,18 +1,19 @@
 #!/bin/bash
 
-# In this script we are identifying .log files from 14 days and deleting them
+# Algarithm:
+# 1. Set up colors code if we want to add any color to our messages
+# 2. Write a method/function to validate the responces
+# 3. Write a method/function to identify whether current user is a Root user or not
+# 4. Create few .log files with a loop
+# 5. Identify the log files which is from last 14 days then delete
+
+# This is to get the root user output
 USERID=$(id -u)
+
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-
-SOURCE_DIR="/home/ec2-user/app-logs"
-
-LOGS_FOLDER="/var/log/shellscript-logs"
-LOG_FILE=$(echo $0 | cut -d "." -f1)
-TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
-LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 
 VALIDATE() {
     if [ $1 -ne 0 ]; then
@@ -30,13 +31,41 @@ CHECK_ROOT() {
     fi
 }
 
+CREATEFILES() {
+    for i in {0..10}; do
+        touch " $LOG_FOLDER/$TIMESTAMP i"
+        echo "list of the file are :: " ls "$LOG_FOLDER"
+    done
+
+}
+
+CHECK_ROOT
+
+# Making a Log file path and save it
+LOG_FOLDER="/var/log/expense-logs"
+DAYS="14"
+CREATEFILES
+
+# verify if the logs directory is exist or not, if not then create
+if [ ! -d $LOG_FOLDER ]; then
+    echo -e "$R Folder is not Exist $N"
+    mkdir $LOG_FOLDER
+    VALIDATE $? "Creating expense-logs Folder is "
+fi
+
+LOG_FILE=$(echo $0 | cut -d "." -f1)
+TIMESTAMP=$(date +%y-%m-%d-%H-%M-%S)
+LOG_FILE_NAME="$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log"
+
 echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
 
-FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +14)
+FILES_TO_DELETE=$(find $LOG_FOLDER -name "*.log" -mtime "+$DAYS")
 echo "Files to be deleted: $FILES_TO_DELETE"
 
-while read -r filepath; do # here filepath is the variable name, you can give any name
-    echo "Deleting file: $filepath" &>>$LOG_FILE_NAME
-    rm -rf $filepath
-    echo "Deleted file: $filepath"
-done <<<$FILES_TO_DELETE
+CREATEFILES() {
+    for i in {0..10}; do
+        cd $LOG_FOLDER
+        touch "$TIMESTAMP i"
+    done
+
+}
