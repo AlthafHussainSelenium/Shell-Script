@@ -11,7 +11,7 @@
 # 8. Once you are in particular schema, you can get the list of tables. e.g., show tables; select * from <table_name>;
 
 # This is to get the root user output
-USRID=$(id -u)
+USERID=$(id -u)
 
 R="\e[31m"
 Y="\e[31m"
