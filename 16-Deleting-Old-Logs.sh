@@ -33,9 +33,9 @@ CHECK_ROOT() {
 
 CREATEFILES() {
     for i in {0..10}; do
-        touch " $LOG_FOLDER/$TIMESTAMP i"
+        touch "$1/$2.log"
         echo "list of the file are :: "
-        ls "$LOG_FOLDER"
+        ls "$1"
     done
 
 }
@@ -45,7 +45,6 @@ CHECK_ROOT
 # Making a Log file path and save it
 LOG_FOLDER="/var/log/expense-logs"
 DAYS="14"
-CREATEFILES
 
 # verify if the logs directory is exist or not, if not then create
 if [ ! -d $LOG_FOLDER ]; then
@@ -59,6 +58,7 @@ fi
 LOG_FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log"
+CREATEFILES $LOG_FOLDER $TIMESTAMP
 
 echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
 
