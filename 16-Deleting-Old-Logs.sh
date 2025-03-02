@@ -62,5 +62,5 @@ CREATEFILES $LOG_FOLDER $TIMESTAMP
 
 echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
 
-FILES_TO_DELETE=$(find $LOG_FOLDER -name "*.log" -mtime "+$DAYS")
+FILES_TO_DELETE=$(find $LOG_FOLDER -name "*.log" -mtime +14)
 echo "Files to be deleted: $FILES_TO_DELETE"
