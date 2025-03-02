@@ -35,8 +35,8 @@ CREATEFILES() {
     for i in 0 1 2 3 4 5; do
         touch "$1/$2.log"
     done
-    echo "list of the file are :: "
-    ls "$1"
+    # echo "list of the file are :: "
+    # ls "$1"
 
 }
 
