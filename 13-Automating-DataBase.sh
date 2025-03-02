@@ -39,7 +39,7 @@ LOG_FOLDER="/var/log/expense-logs"
 # verify if the logs directory is exist or not, if not then create
 if [ ! -d $LOG_FOLDER ]; then
     echo -e "$R Folder is not Exist $N"
-    mkd dir $LOG_FOLDER
+    mkdir $LOG_FOLDER
     VALIDATE $? "Creating expense-logs Folder"
 fi
 
