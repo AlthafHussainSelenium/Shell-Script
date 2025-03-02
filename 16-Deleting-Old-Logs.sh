@@ -32,7 +32,7 @@ CHECK_ROOT() {
 }
 
 CREATEFILES() {
-    for i in {0..10}; do
+    for i in 0 1 2 3 4 5; do
         touch "$1/$2.log"
     done
     echo "list of the file are :: "
