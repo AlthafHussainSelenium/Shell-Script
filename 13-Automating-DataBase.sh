@@ -14,8 +14,8 @@
 USERID=$(id -u)
 
 R="\e[31m"
-Y="\e[32m"
-G="\e[33m"
+G="\e[32m"
+Y="\e[33m"
 N="\e[0m"
 
 VALIDATE() {
@@ -51,6 +51,20 @@ TIMESTAMP=$(date +%y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 
 echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
+
+nf list installed mysqld
+
+if [ $? -eq 0 ]; then # not installed
+    dnf remove mysql-server -y &>>$LOG_FILE_NAME
+    if [ $? -ne 0 ]; then
+        echo "Installing MySQL ... FAILURE"
+        exit 1
+    else
+        echo "Installing MySQL ... SUCCESS"
+    fi
+else
+    echo "MySQL is already ... INSTALLED"
+fi
 
 dnf install mysql-server -y &>>$LOG_FILE_NAME
 VALIDATE $? "Installing MySQL Server"
