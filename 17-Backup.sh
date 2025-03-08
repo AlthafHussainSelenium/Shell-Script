@@ -69,7 +69,7 @@ if [ ! -d $DEST_DIR ]; then
     exit 1
 fi
 
-echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
+echo "Script started executing at: $TIMESTAMP" &>>$LOGFILE_NAME
 
 dnf list installed zip
 if [ $? -ne 0 ]; then
