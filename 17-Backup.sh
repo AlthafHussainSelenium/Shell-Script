@@ -82,11 +82,11 @@ fi
 
 CREATEFILES() {
     for i in 0 1 2 3 4 5; do
-        touch "$i-$TIME_STAMP.log"
+        touch "$1"
     done
 }
 
-CREATEFILES
+CREATEFILES "$LOGFILE_NAME"
 
 FILES=$(find $SOURCE_DIR -name "*.log" -mtime $DAYS)
 
