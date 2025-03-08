@@ -31,7 +31,7 @@ TIME_STAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOGFILE_NAME="$LOG_FOLDER/$LOG_FILE-$TIME_STAMP.log"
 
 VALIDATE() {
-    if [ $1 -ne 0]; then
+    if [ $1 -ne 0 ]; then
         echo -e "$2 ... $R FAILURE $N"
         exit 1
     else
@@ -42,7 +42,7 @@ VALIDATE() {
 USERID=$(id -u)
 
 CHECK_ROOT() {
-    if [ $USERID -ne 0]; then
+    if [ $USERID -ne 0 ]; then
         echo "ERROR:: You must have sudo access to execute this script"
         exit 1 #other than 0
     fi
@@ -93,11 +93,11 @@ FILES=$(find $SOURCE_DIR -name "*.log" -mtime $DAYS)
 if [ -n $FILES ]; then
     echo "Files are: $FILES"
     ZIP_FILE="$DEST_DIR/app-logs-$TIME_STAMP.zip"
-    $FILES | zip -@ "$ZIP_FILE"
+    find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip -@ "$ZIP_FILE"
     if [ -f $ZIP_FILE ]; then
         echo -e "Successfully created zip file for files older than $DAYS"
         while read -r filepath; do # here filepath is the variable name, you can give any name
-            echo "Deleting file: $filepath" &>>$LOG_FILE_NAME
+            echo "Deleting file: $filepath" &>>$LOGFILE_NAME
             rm -rf $filepath
             echo "Deleted file: $filepath"
         done <<<$FILES
