@@ -33,7 +33,7 @@ CHECK_ROOT() {
 
 CREATEFILES() {
     for i in 0 1 2 3 4 5; do
-        touch "$1/$2.log"
+        touch "$1"
     done
     # echo "list of the file are :: "
     # ls "$1"
@@ -58,12 +58,11 @@ fi
 LOG_FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log"
-CREATEFILES $LOG_FOLDER $TIMESTAMP
+CREATEFILES $LOG_FILE_NAME
 
 echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
 
-FILES_TO_DELETE= $(find $LOG_FOLDER -name "*.log")
-#FILES_TO_DELETE=$(find $LOG_FOLDER -name "*.log" -mtime +14)
+FILES_TO_DELETE=$(find $LOG_FOLDER -name "*.log" -mtime +14)
 echo "Files to be deleted: $FILES_TO_DELETE"
 
 while read -r filepath; do # here filepath is the variable name, you can give any name
