@@ -55,7 +55,7 @@ USAGE() {
 
 mkdir -p "$LOG_FOLDER"
 
-if [ $# - 2]; then
+if [ $# - 2 ]; then
     USAGE
 fi
 
@@ -64,7 +64,7 @@ if [ ! -d $SOURCE_DIR ]; then
     exit 1
 fi
 
-if [ ! -d $DEST_DIR]; then
+if [ ! -d $DEST_DIR ]; then
     echo -e "$DEST_DIR Does not exist...Please check"
     exit 1
 fi
@@ -72,7 +72,7 @@ fi
 echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
 
 dnf list installed zip
-if [ $? -ne 0]; then
+if [ $? -ne 0 ]; then
     echo -e "$R ZIP Is Not Installed $N"
     dnf install zip -y
     VALIDATE $? " ZIP Installation "
