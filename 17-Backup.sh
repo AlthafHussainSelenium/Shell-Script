@@ -90,10 +90,10 @@ CREATEFILES
 
 FILES=$(find $SOURCE_DIR -name "*.log" -mtime $DAYS)
 
-if [ -n $FILES ]; then
+if [ -n $FILES ]; then # true if there are files to zip
     echo "Files are: $FILES"
-    ZIP_FILE="$DEST_DIR/app-logs-$TIME_STAMP.zip"
-    find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip -@ "$ZIP_FILE"
+    ZIP_FILE="$DEST_DIR/$LOG_FILE-$TIME_STAMP.zip"
+    $FILES | zip -@ "$ZIP_FILE"
     if [ -f $ZIP_FILE ]; then
         echo -e "Successfully created zip file for files older than $DAYS"
         while read -r filepath; do # here filepath is the variable name, you can give any name
@@ -102,7 +102,7 @@ if [ -n $FILES ]; then
             echo "Deleted file: $filepath"
         done <<<$FILES
     else
-        echo -e "$R Error:: $N Failed to create ZIP file "
+        echo -e "$R Error:: Failed to create ZIP file $N"
         exit 1
     fi
 
