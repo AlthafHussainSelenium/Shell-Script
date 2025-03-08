@@ -55,7 +55,7 @@ USAGE() {
 
 mkdir -p "$LOG_FOLDER"
 
-if [ $# - 2 ]; then
+if [ $# -lt 2 ]; then
     USAGE
 fi
 
